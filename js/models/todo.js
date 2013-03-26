@@ -8,3 +8,8 @@ Todos.Todo = DS.Model.extend({
 		});
 	}.observes('isCompleted', 'title')
 });
+
+Todos.Todo.reopenClass({
+  rs_type: 'task',
+  rs_module: 'tasks'
+});

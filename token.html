@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title></title>
+    <meta name="description" content=""/>
+  </head>
+  <body>
+    <div id="rs-widget"></div>
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="js/libs/remotestorage.min.js"></script>
+    <script src="js/libs/tasks.js"></script>
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+      remoteStorage.claimAccess({ tasks: 'rw' }).then(function() {
+        remoteStorage.displayWidget('rs-widget', { redirectUri: window.location.origin + '/token.html' });
+        remoteStorage.onWidget('ready', function() {
+          window.location = window.location.origin;
+        });
+      });
+    </script>
+  </body>
+</html>
