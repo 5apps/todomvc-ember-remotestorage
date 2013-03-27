@@ -1,0 +1,3 @@
+[submodule "js/libs/ember-data-remotestorage"]
+	path = js/libs/ember-data-remotestorage
+	url = git@github.com:5apps/ember-data-remotestorage.git
