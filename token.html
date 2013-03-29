@@ -17,7 +17,7 @@
     <script type="text/javascript">
       remoteStorage.claimAccess({ tasks: 'rw' }).then(function() {
         remoteStorage.displayWidget('rs-widget', { redirectUri: window.location.origin + '/token.html' });
-        remoteStorage.onWidget('ready', function() {
+        remoteStorage.on('ready', function() {
           window.location = window.location.origin;
         });
       });
