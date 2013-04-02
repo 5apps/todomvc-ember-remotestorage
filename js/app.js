@@ -6,7 +6,10 @@ window.Todos = Ember.Application.create({
   }
 });
 
-Todos.deferReadiness();
+
+if (window.location.hash.match(/#access_token=.+/)) {
+  Todos.deferReadiness();
+}
 
 remoteStorage.claimAccess({ tasks: 'rw' }).then(function() {
   remoteStorage.on('ready', function() {
