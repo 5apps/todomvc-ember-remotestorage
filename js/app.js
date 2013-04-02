@@ -6,11 +6,20 @@ window.Todos = Ember.Application.create({
   }
 });
 
+Todos.deferReadiness();
+
 remoteStorage.claimAccess({ tasks: 'rw' }).then(function() {
-  remoteStorage.displayWidget('rs-widget', { redirectUri: window.location.origin + '/token.html' });
+  remoteStorage.on('ready', function() {
+    console.log("widget ready");
+
+    Todos.advanceReadiness();
+  });
+
   remoteStorage.on('disconnect', function() {
     var router = Todos.Router.router;
     router.getHandler().controllerFor('todos').set('content', []);
     router.transitionTo('todos.index');
   });
+
+  remoteStorage.displayWidget('rs-widget');
 });
