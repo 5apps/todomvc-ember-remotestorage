@@ -24,5 +24,5 @@ remoteStorage.claimAccess({ tasks: 'rw' }).then(function() {
     router.transitionTo('todos.index');
   });
 
-  remoteStorage.displayWidget('rs-widget');
+  remoteStorage.displayWidget('rs-widget', { redirectUri: window.location.href });
 });
